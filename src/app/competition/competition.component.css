@@ -1,0 +1,31 @@
+.red{
+    color: red;
+}
+.green{
+    color: green;
+}
+.competition-list_competition{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: .5rem;
+}
+.competition-list_competition__name{
+   font-size: 25px;
+}
+.competition-list_competition__name:hover{
+    background-color: rgb(190, 190, 190);
+    cursor: pointer;
+    
+}
+.competition-list_competition-unavailable{
+    font-size: 25px;
+    background-color: red;
+    border-radius: 5px;
+    color: honeydew;
+}
+.competition-list_competition-available{
+    font-size: 25px;
+    background-color: green;
+    border-radius: 5px;
+    color: honeydew;
+}
