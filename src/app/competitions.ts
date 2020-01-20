@@ -1,18 +1,18 @@
-export interface ICompetitions{
-    count: number, 
-    fiilter: object,
-    competitions: ICompetition[]
+export interface ICompetitions {
+    count: number;
+    fiilter: object;
+    competitions: ICompetition[];
 }
-export interface ICompetition{
-    id: string,
-    area: object,
-    name: string,
-    code: string,
-    emblemUrl: string,
-    plan: string,
-    currentSeason: object,
-    numberOfAvailableSeasons: number,
-    lastUpdated: string
+export interface ICompetition {
+    id: string;
+    area: object;
+    name: string;
+    code: string;
+    emblemUrl: string;
+    plan: string;
+    currentSeason: object;
+    numberOfAvailableSeasons: number;
+    lastUpdated: string;
 }
 
 

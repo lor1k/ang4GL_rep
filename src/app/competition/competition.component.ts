@@ -1,37 +1,39 @@
-import { Component, OnInit, Input, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ICompetition } from '../competitions';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { CompetitionsService } from '../competitions.service';
+import { IMatches } from '../matches';
 @Component({
   selector: 'app-competition',
   templateUrl: './competition.component.html',
   styleUrls: ['./competition.component.css']
 })
-export class CompetitionComponent/*implements ICompetition*/ {  
+export class CompetitionComponent/*implements ICompetition*/ {
   @Input() competition: ICompetition;
-  gamesAreVisible: boolean = false;
-  moreAboutCompetition:ICompetition;
-  available:boolean;
+  gamesAreVisible = false;
+  moreAboutCompetition: ICompetition;
+  available: boolean;
+  matches: IMatches;
 
-  getGames(){
-    let headers: HttpHeaders = new HttpHeaders().set('X-Auth-Token', '820457541e5c4c82826e7c43ea37015a');
-    this.http.get('http://api.football-data.org/v2/competitions/' + this.competition.id, { headers }).toPromise().then(data => {
-        //console.log(data);
-        this.available = true;
-        this.moreAboutCompetition = <ICompetition>data;
+
+  toggleGamesAreVisible() {
+    if (this.matches == undefined) {
+      // this.getGames();
+      this.competitionsService.getMatches(this.competition.id).then((data) => {
+        if (data == false) {
+          this.available = false;
+        } else {
+          this.available = true;
+          this.matches = data as IMatches;
         }
-      ).catch(error => {
-        this.available = false;
+
       });
-  }
-  toggleGamesAreVisible(){
-    if(this.moreAboutCompetition == undefined){
-      this.getGames();
-      console.log("Requested");
+      console.log('Requested');
     }
-    
+
     this.gamesAreVisible = !this.gamesAreVisible;
   }
-  constructor(private http: HttpClient/*c:ICompetition*/) { 
+  constructor(private http: HttpClient,  private competitionsService: CompetitionsService/*c:ICompetition*/) {
     // this.id = c.id;
     // this.area = c.area;
     // this.name = c.name;
@@ -42,5 +44,4 @@ export class CompetitionComponent/*implements ICompetition*/ {
     // this.numberOfAvailableSeasons = c.numberOfAvailableSeasons;
     // this.lastUpdated = c.lastUpdated;
   }
-
 }

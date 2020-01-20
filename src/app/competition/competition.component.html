@@ -1,7 +1,7 @@
 <div class="competition-list_competition">
     <span *ngIf="available === false" class="competition-list_competition-unavailable">Unavaliable</span>
     <span *ngIf="available === true" class="competition-list_competition-available">Available</span>
-    
+
     <span class="competition-list_competition__name"
     [ngClass]="{
        red: available === false,
@@ -9,9 +9,10 @@
     } 
     "
      (click) = "toggleGamesAreVisible()">{{competition.name}}</span> 
-    <div class="games-list" *ngIf="moreAboutCompetition != undefinded && gamesAreVisible">
-        <div class="id">ID: {{moreAboutCompetition.id}}</div>
-        <div class="area">Area: {{moreAboutCompetition.area.name}}</div>
-        
+    <div class="matches-list" *ngIf="matches != undefinded && gamesAreVisible">
+        <div class="matches-wraper" *ngFor="let m of matches.matches">
+            ({{m.id}}) {{m.homeTeam.name}} - {{m.awayTeam.name}}
+        </div>
+        <div (click) = "toggleGamesAreVisible()" class="matches-list__close"> close</div>
     </div>
 </div>

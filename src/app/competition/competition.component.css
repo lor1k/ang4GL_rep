@@ -10,7 +10,8 @@
     padding: .5rem;
 }
 .competition-list_competition__name{
-   font-size: 25px;
+    margin-left: 10px;
+    font-size: 25px;
 }
 .competition-list_competition__name:hover{
     background-color: rgb(190, 190, 190);
@@ -18,14 +19,26 @@
     
 }
 .competition-list_competition-unavailable{
+    padding: 3px;
     font-size: 25px;
     background-color: red;
     border-radius: 5px;
     color: honeydew;
 }
 .competition-list_competition-available{
+    padding: 3px;
     font-size: 25px;
     background-color: green;
     border-radius: 5px;
     color: honeydew;
+}
+.matches-list__close{
+    text-decoration: underline;
+    font-size: 20px;
+    transition: .3s;
+
+}
+.matches-list__close:hover{
+    cursor: pointer;
+    margin-left: 5px;
 }
