@@ -10,17 +10,17 @@ export class CompetitionComponent/*implements ICompetition*/ {
   @Input() competition: ICompetition;
   gamesAreVisible: boolean = false;
   moreAboutCompetition:ICompetition;
-  available:string;
+  available:boolean;
 
   getGames(){
     let headers: HttpHeaders = new HttpHeaders().set('X-Auth-Token', '820457541e5c4c82826e7c43ea37015a');
     this.http.get('http://api.football-data.org/v2/competitions/' + this.competition.id, { headers }).toPromise().then(data => {
-        console.log(data);
-        this.available = "true";
+        //console.log(data);
+        this.available = true;
         this.moreAboutCompetition = <ICompetition>data;
         }
       ).catch(error => {
-        this.available ="false";
+        this.available = false;
       });
   }
   toggleGamesAreVisible(){

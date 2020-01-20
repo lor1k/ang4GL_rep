@@ -1,11 +1,11 @@
 <div class="competition-list_competition">
-    <span *ngIf="available === 'false'" class="competition-list_competition-unavailable">Unavaliable</span>
-    <span *ngIf="available === 'true'" class="competition-list_competition-available">Available</span>
+    <span *ngIf="available === false" class="competition-list_competition-unavailable">Unavaliable</span>
+    <span *ngIf="available === true" class="competition-list_competition-available">Available</span>
     
     <span class="competition-list_competition__name"
     [ngClass]="{
-       red: available === 'false',
-       green:  available === 'true'
+       red: available === false,
+       green: available === true
     } 
     "
      (click) = "toggleGamesAreVisible()">{{competition.name}}</span> 
